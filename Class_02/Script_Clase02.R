@@ -14,18 +14,31 @@
 
 # Creación de Objetos
 
-x<-NULL
+x<-NULL #objeto en blanco 
 y<-c(TRUE,FALSE)
 as.numeric(y)
 
 A<-1
 years<-2010:2020
+year<- seq(2010, 2020, by = 0.5)
 tiktoc<-c("Que", "linda", "te ves", "limpiando", "Esperancita")
+paste("hola", "mundo",sep=" ")
+paste(tiktoc, collapse = " ")
+
+numero_en_texto<-c("1", "2", "3")
+as.numeric(numero_en_texto)# para cambiar un string a numero
+
 m1<-matrix(1:4,2,2)
+m1
+m1%*%t(m1)
+diag(m1)
+solve(m1)
+
 a1<-array(1:12,dim = c(2,2,3))
+a1
 d1<-data.frame(m1)
 data("quakes") # promise
-d1<-data.frame(quakes)
+d1<-data.frame(quakes)  #en la cosloa poner View(d1) para ver los datos 
 
 ls()
 l1<-list(A=A,years,tiktoc,m1)
@@ -44,9 +57,11 @@ names(d1)
 head(d1)
 tail(d1)
 
-rm(l1)
+rm(A)
 
 #Bonus: como se borra todo?
+
+rm(list = ls())
 
 # Indexación uso de los []
 
@@ -55,6 +70,7 @@ years[1]
 
 dim(m1)
 m1[2,3]
+#m1[2,2]
 
 dim(a1)
 a1[2,1,3]
@@ -63,12 +79,15 @@ l1[2]
 l1[2][[1]][1:2]
 
 l1[[2]][1:2]
-
+d1
 d1[1,]
 d1[,1]
+
+d1
 d1$lat[1:4]
 d1[,'lat']
 d1[1:4,c('lat','long')]
+
 d1$mag>5
 table(d1$mag>5)
 d1[d1$mag>6,]
@@ -89,8 +108,6 @@ if(A==1){
 } else {
   print("A no es igual a 1, pero no se preocupe que lo hacemos")
   A<-1L
-}
-
 
 for(i in 1:5){
   print(paste("Me le declaro a la ", i))
@@ -100,6 +117,8 @@ for(i in 1:5){
 }
 
 i<-1
+eps<-50/(i^2)
+
 while(eps>0.001){
   eps<-50/(i^2)
   print(paste("eps value es still..", eps))
@@ -121,7 +140,7 @@ tapply(X = quakes$mag,INDEX = quakes$stations, FUN = mean)
 #https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
 library(tidyverse)
 #Cómo se instala el paquete si no lo tengo? Tank!!! ayudaaaa!
-
+install.packages("tidyverse") #para instalar paquetes
 quakes %>% 
   filter(mag>6) %>% 
   select(mag) 
