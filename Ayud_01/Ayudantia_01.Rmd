@@ -22,13 +22,15 @@ seq(1,16,3)
 ### Repeticiones:
 ```{r Repeticiones} 
 rep(1,4)
-rep(c(1,5,8,2),4)
+rep("1",4)
+rep(c(1,5,8,2),4)#tambien puedo poner strings, pero me va a tomar todo el vector como caracter
+rep(c(1,5,"hol",2),4)
 ```
 
 ### Ordenar
 ```{r Ordenar} 
 sort(c(1,9,8,4,6,3,6,5,2))
-sort(c(1,9,8,4,6,3,6,5,2), decreasing = T)
+sort(c(1,9,8,4,6,3,6,5,2), decreasing = T) #T es la abreviacion de TRUE, F es de false
 ```
 
 ### Análisis básico
@@ -52,10 +54,10 @@ sort(rep(seq(1,5,2),5))
 Al trabajar con bases de datos es necesario saber que existen múltiples funciones que permiten analizar las cualidades y caracteristicas de estas. A continuación, se mostrará como trabajar con bases de datos de clase "data.table", ya sea en la manipulación de estas como el cálculo de valores básicos. El primer paso es escoger una base de datos con la cual trbajar. En dicha ayudantía trabajaremos con la base de datos "Titanic", la cual viene incluida en R al descargarlo.
 
 ```{r paquetes}
-#install.packages("data.table")
-#install.packages("titanic")
+install.packages("data.table")
+install.packages("titanic")
 library(data.table)
-library(titanic)
+#si escribo titanic:: me va a buscar las bases de datos que pertenencen a dicho paquete 
 Titanic <- data.table(titanic_train)  ## Notar que ahí creamos un objeto que se llama Titanic, al cual transformamos en clase data.table
 ```
 
@@ -66,7 +68,7 @@ Titanic[1,]  ## Arroja información sobre la primera fila
 Titanic[6:14,]  ## Arroja información sobre la fila 6 a 14
 Titanic[,4]  ## Arroja información sobre la cuarta columna
 Titanic[,2:8]  ## Arroja información sobre la columna 2 a 8
-Titanic[,.(Survived,Age)]  ## También se puede con nombres de variables
+Titanic[,.(Survived,Age)]  ## También se puede con nombres de variables, el punto ordena si lohago con la funcion c, me va tirar distintos vectores
 ```
 
 Ahora, aprendamos algunas estrategias de filtrado básico:
@@ -90,7 +92,7 @@ ncol(Titanic)
 ¿Que clase de objeto es dicha base de datos? ¿Y cada una de sus variables?
 
 ```{r Clase}
-class(Titanic)
+class(Titanic)#antes de empezar, revisar que tipo de datos tiene, esto puede servir pq hay funciones que trabajan con mnumeros y otras con letras...
 class(Titanic[,Name])
 class(Titanic[,Ticket])
 class(Titanic[,Age])
@@ -102,7 +104,7 @@ class(Titanic[,Embarked])
 
 ```{r Categorías}
 unique(Titanic[,Embarked])  ## intentar con función "levels" para el caso de columnas de clase "factor"    
-unique(Titanic[,Sex])
+unique(Titanic[,Sex])#que categorias son 
 unique(Titanic[,Pclass])
 unique(Titanic[,Survived])
 ```
