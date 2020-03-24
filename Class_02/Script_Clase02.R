@@ -20,6 +20,7 @@ as.numeric(y)
 
 A<-1
 years<-2010:2020
+<<<<<<< HEAD
 year<- seq(2010, 2020, by = 0.5)
 tiktoc<-c("Que", "linda", "te ves", "limpiando", "Esperancita")
 paste("hola", "mundo",sep=" ")
@@ -30,27 +31,55 @@ as.numeric(numero_en_texto)# para cambiar un string a numero
 
 m1<-matrix(1:4,2,2)
 m1
+=======
+year<- seq(2010,2020,by = 0.5)
+tiktoc<-c("Que", "linda", "te ves", "limpiando", "Esperancita")
+
+paste("Hola","Mundo",sep=" ")
+
+paste(tiktoc,collapse = " ")
+
+obj2<- as.numeric(c(1,2,3,4,"Esperancita"))
+is.na(obj2)
+
+
+numeros_en_texto<-c("1","2","3")
+as.numeric(numeros_en_texto)
+
+m1<-matrix(1:4,2,2)
+>>>>>>> 7a0750334e5bd6a30dc923727a86b4ca42c7af30
 m1%*%t(m1)
 diag(m1)
 solve(m1)
 
+<<<<<<< HEAD
 a1<-array(1:12,dim = c(2,2,3))
 a1
+=======
+
+a1<-array(1:12,dim = c(2,2,3))
+
+>>>>>>> 7a0750334e5bd6a30dc923727a86b4ca42c7af30
 d1<-data.frame(m1)
 data("quakes") # promise
 d1<-data.frame(quakes)  #en la cosloa poner View(d1) para ver los datos 
 
 ls()
-l1<-list(A=A,years,tiktoc,m1)
+
+l1<-list(Perrito=A,years,tiktoc,m1)
+A<-3L
 
 # Manipulación de Objetos
 ls()
+
+A<-1L
 
 class(A)
 typeof(A)
 
 length(years)
 dim(m1)
+
 object.size(d1)
 
 names(d1)
@@ -60,37 +89,56 @@ tail(d1)
 rm(A)
 
 #Bonus: como se borra todo?
+rm(list=ls())
 
 rm(list = ls())
 
 # Indexación uso de los []
 
 length(years)
-years[1]
+years[11]
 
 dim(m1)
+<<<<<<< HEAD
 m1[2,3]
 #m1[2,2]
+=======
+m1[1,2]
+>>>>>>> 7a0750334e5bd6a30dc923727a86b4ca42c7af30
 
 dim(a1)
+class(a1)
 a1[2,1,3]
 
 l1[2]
 l1[2][[1]][1:2]
 
+<<<<<<< HEAD
 l1[[2]][1:2]
 d1
 d1[1,]
 d1[,1]
 
 d1
+=======
+l1[[2]][3:5]
+
+l1$Perrito
+
+d1[1,]
+d1[,1]
+d1[,'lat']
+d1$mag[seq(1,16,2)]
+>>>>>>> 7a0750334e5bd6a30dc923727a86b4ca42c7af30
 d1$lat[1:4]
+
 d1[,'lat']
 d1[1:4,c('lat','long')]
 
 d1$mag>5
 table(d1$mag>5)
-d1[d1$mag>6,]
+d1[d1$mag>6,'stations']
+
 d1$dummy_5up<-as.numeric(d1$mag>5)
 head(d1)
 
@@ -108,6 +156,19 @@ if(A==1){
 } else {
   print("A no es igual a 1, pero no se preocupe que lo hacemos")
   A<-1L
+<<<<<<< HEAD
+=======
+}
+
+A<-1
+class(A)
+typeof(A)
+
+dim(A)
+length(A)
+
+# For loop
+>>>>>>> 7a0750334e5bd6a30dc923727a86b4ca42c7af30
 
 for(i in 1:5){
   print(paste("Me le declaro a la ", i))
@@ -118,7 +179,10 @@ for(i in 1:5){
 
 i<-1
 eps<-50/(i^2)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7a0750334e5bd6a30dc923727a86b4ca42c7af30
 while(eps>0.001){
   eps<-50/(i^2)
   print(paste("eps value es still..", eps))
@@ -140,7 +204,12 @@ tapply(X = quakes$mag,INDEX = quakes$stations, FUN = mean)
 #https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
 library(tidyverse)
 #Cómo se instala el paquete si no lo tengo? Tank!!! ayudaaaa!
+<<<<<<< HEAD
 install.packages("tidyverse") #para instalar paquetes
+=======
+#install.packages("tydiverse")
+
+>>>>>>> 7a0750334e5bd6a30dc923727a86b4ca42c7af30
 quakes %>% 
   filter(mag>6) %>% 
   select(mag) 
@@ -153,8 +222,11 @@ quakes %>%
 ### 3. data.table (recommended in this course)
 library(data.table)
 #https://github.com/rstudio/cheatsheets/raw/master/datatable.pdf
-
+#install.packages("data.table")
 quakes<-data.table(quakes)
+
+
+quakes[quakes$mag>6,'mag']
 
 quakes[mag>6,.(mag)]
 
